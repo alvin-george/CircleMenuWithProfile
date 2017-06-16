@@ -33,12 +33,15 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.39105308219178081" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fm4-aD-XOb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ALB-cZ-DVj"/>
                             <constraint firstItem="Fm4-aD-XOb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="br5-Yv-bnH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="circleCenterButton" destination="Fm4-aD-XOb" id="gX6-t5-7kV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

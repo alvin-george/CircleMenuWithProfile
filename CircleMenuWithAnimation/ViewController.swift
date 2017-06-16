@@ -10,37 +10,66 @@ import UIKit
 
 class ViewController: UIViewController, CircleMenuDelegate {
     
-    
-    //    let colors = [UIColor.redColor(), UIColor.grayColor(), UIColor.greenColor(), UIColor.purpleColor()]
-    let items: [(icon: String, color: UIColor)] = [
-        ("icon_home", UIColor(red:0.19, green:0.57, blue:1, alpha:1)),
-        ("icon_search", UIColor(red:0.22, green:0.74, blue:0, alpha:1)),
-        ("notifications-btn", UIColor(red:0.96, green:0.23, blue:0.21, alpha:1)),
-        ("settings-btn", UIColor(red:0.51, green:0.15, blue:1, alpha:1)),
-        ("nearby-btn", UIColor(red:1, green:0.39, blue:0, alpha:1)),
-        ]
-
+    var appUIColor_First:UIColor = UIColor(rgb: 0x3F51B5)
+    var imageNameArray:[String]!
+    @IBOutlet weak var circleCenterButton: CircleMenu!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        updateArrays()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        updateArrays()
+    }
+    func updateArrays()
+    {
+        imageNameArray = ["activity","notification","profile","report","contact","subjects"]
+        
+        circleCenterButton.buttonsCount = imageNameArray.count
+        circleCenterButton.tintColor = appUIColor_First
+        //circleCenterButton.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
+     
+        //circleCenterButton.frame.size.width = 150
+       // circleCenterButton.frame.size.height = 80
+        circleCenterButton.distance = Float(self.view.frame.midX)
+       
+
+    }
+
     
     
     // MARK: <CircleMenuDelegate>
     
     func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int) {
         
+        circleMenu.buttonsCount =  imageNameArray.count
+        circleMenu.tintColor = appUIColor_First
         
-        button.backgroundColor = items[atIndex].color
+        circleCenterButton.frame.size.width = 80
+        circleCenterButton.frame.size.height = 80
         
-        button.setImage(UIImage(named: items[atIndex].icon), for: .normal)
+        button.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        
+        circleMenu.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+
+        button.backgroundColor = appUIColor_First
+        
+        
+        //button.backgroundColor = items[atIndex].color
+        
+        button.setImage(UIImage(named: imageNameArray[atIndex]), for: .normal)
+        button.imageView?.contentMode = UIViewContentMode.scaleAspectFit;
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
         
         // set highlited image
-        let highlightedImage  = UIImage(named: items[atIndex].icon)?.withRenderingMode(.alwaysTemplate)
+        let highlightedImage  = UIImage(named: imageNameArray[atIndex])?.withRenderingMode(.alwaysTemplate)
         button.setImage(highlightedImage, for: .highlighted)
-        button.tintColor = UIColor.init(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.3)
+        
+        button.tintColor = appUIColor_First
     }
     
     func circleMenu(_ circleMenu: CircleMenu, buttonWillSelected button: UIButton, atIndex: Int) {
@@ -58,11 +87,19 @@ class ViewController: UIViewController, CircleMenuDelegate {
     
 }
 extension UIColor {
-    static func color(_ red: Int, green: Int, blue: Int, alpha: Float) -> UIColor {
-        return UIColor(
-            colorLiteralRed: Float(1.0) / Float(255.0) * Float(red),
-            green: Float(1.0) / Float(255.0) * Float(green),
-            blue: Float(1.0) / Float(255.0) * Float(blue),
-            alpha: alpha)
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
     }
 }
