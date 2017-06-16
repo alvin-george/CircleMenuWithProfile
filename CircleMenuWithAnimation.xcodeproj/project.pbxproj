@@ -12,6 +12,9 @@
 		186296661EF417920051544A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186296641EF417920051544A /* Main.storyboard */; };
 		186296681EF417920051544A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 186296671EF417920051544A /* Assets.xcassets */; };
 		1862966B1EF417920051544A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186296691EF417920051544A /* LaunchScreen.storyboard */; };
+		186296741EF417BA0051544A /* CircleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186296731EF417BA0051544A /* CircleMenu.swift */; };
+		186296761EF417CE0051544A /* CircleMenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186296751EF417CE0051544A /* CircleMenuLoader.swift */; };
+		186296781EF417D40051544A /* CircleMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186296771EF417D40051544A /* CircleMenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		186296671EF417920051544A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1862966A1EF417920051544A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1862966C1EF417920051544A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		186296731EF417BA0051544A /* CircleMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenu.swift; sourceTree = "<group>"; };
+		186296751EF417CE0051544A /* CircleMenuLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenuLoader.swift; sourceTree = "<group>"; };
+		186296771EF417D40051544A /* CircleMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleMenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		1862965F1EF417920051544A /* CircleMenuWithAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				186296721EF417A80051544A /* helper */,
 				186296601EF417920051544A /* AppDelegate.swift */,
 				186296621EF417920051544A /* ViewController.swift */,
 				186296641EF417920051544A /* Main.storyboard */,
@@ -62,6 +69,16 @@
 				1862966C1EF417920051544A /* Info.plist */,
 			);
 			path = CircleMenuWithAnimation;
+			sourceTree = "<group>";
+		};
+		186296721EF417A80051544A /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				186296731EF417BA0051544A /* CircleMenu.swift */,
+				186296751EF417CE0051544A /* CircleMenuLoader.swift */,
+				186296771EF417D40051544A /* CircleMenuButton.swift */,
+			);
+			name = helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186296741EF417BA0051544A /* CircleMenu.swift in Sources */,
 				186296631EF417920051544A /* ViewController.swift in Sources */,
 				186296611EF417920051544A /* AppDelegate.swift in Sources */,
+				186296781EF417D40051544A /* CircleMenuButton.swift in Sources */,
+				186296761EF417CE0051544A /* CircleMenuLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
