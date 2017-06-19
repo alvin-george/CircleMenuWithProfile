@@ -22,21 +22,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm4-aD-XOb" customClass="CircleMenu" customModule="CircleMenuWithAnimation" customModuleProvider="target">
-                                <rect key="frame" x="162" y="308.5" width="50" height="50"/>
+                                <rect key="frame" x="152" y="298.5" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="UG6-UL-vGX"/>
-                                    <constraint firstAttribute="width" constant="50" id="ehK-Ch-tbs"/>
+                                    <constraint firstAttribute="height" constant="70" id="UG6-UL-vGX"/>
+                                    <constraint firstAttribute="width" constant="70" id="ehK-Ch-tbs"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="icon_menu"/>
+                                <state key="normal" image="person"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="49p-Ko-fNB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mathews Johns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5G-BS-1eC">
+                                <rect key="frame" x="136" y="371.5" width="103.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fm4-aD-XOb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ALB-cZ-DVj"/>
+                            <constraint firstItem="V5G-BS-1eC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Src-o8-Zbe"/>
                             <constraint firstItem="Fm4-aD-XOb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="br5-Yv-bnH"/>
+                            <constraint firstItem="V5G-BS-1eC" firstAttribute="top" secondItem="Fm4-aD-XOb" secondAttribute="bottom" constant="3" id="c3C-gr-Kp9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -48,6 +56,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_menu" width="120" height="120"/>
+        <image name="person" width="90" height="90"/>
     </resources>
 </document>
