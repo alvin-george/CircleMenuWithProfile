@@ -12,6 +12,9 @@ class ViewController: UIViewController, CircleMenuDelegate {
     
     var appUIColor_First:UIColor = UIColor(rgb: 0x3F51B5)
     var imageNameArray:[String]!
+    var menuItemNameArray:[String]!
+    var buttonTitleLabel:UILabel!
+    
     @IBOutlet weak var circleCenterButton: CircleMenu!
     
     
@@ -25,59 +28,54 @@ class ViewController: UIViewController, CircleMenuDelegate {
     }
     func updateArrays()
     {
-        imageNameArray = ["activity","notification","profile","report","contact","subjects"]
+        imageNameArray = ["activity","notification","profile","report","contact","subjects","child"]
+        menuItemNameArray = ["Activity","Notification","Profile","Report","Contact","Subjects","Child"]
         
         circleCenterButton.buttonsCount = imageNameArray.count
         circleCenterButton.tintColor = appUIColor_First
-        //circleCenterButton.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
-     
-        //circleCenterButton.frame.size.width = 150
-       // circleCenterButton.frame.size.height = 80
-        circleCenterButton.distance = Float(self.view.frame.midX)
-       
-
+        
     }
-
-    
     
     // MARK: <CircleMenuDelegate>
     
     func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int) {
         
         circleMenu.buttonsCount =  imageNameArray.count
-        circleMenu.tintColor = appUIColor_First
+        circleMenu.distance =  Float(self.view.frame.size.width/2 - 10)
+        circleMenu.duration = 0.3
         
-        circleCenterButton.frame.size.width = 80
-        circleCenterButton.frame.size.height = 80
-        
-        button.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        
-        circleMenu.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-
-        button.backgroundColor = appUIColor_First
-        
-        
-        //button.backgroundColor = items[atIndex].color
-        
-        button.setImage(UIImage(named: imageNameArray[atIndex]), for: .normal)
-        button.imageView?.contentMode = UIViewContentMode.scaleAspectFit;
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        button.setBackgroundImage(UIImage(named: imageNameArray[atIndex]), for: .normal)
         
         // set highlited image
         let highlightedImage  = UIImage(named: imageNameArray[atIndex])?.withRenderingMode(.alwaysTemplate)
         button.setImage(highlightedImage, for: .highlighted)
         
-        button.tintColor = appUIColor_First
+        
+        buttonTitleLabel = UILabel(frame: CGRect(x: button.frame.origin.x - button.frame.midX , y: button.frame.origin.y + (button.frame.midX + 10), width: button.frame.size.width * 2, height: button.frame.size.height))
+        buttonTitleLabel?.text = menuItemNameArray[atIndex]
+        buttonTitleLabel?.font = UIFont(name: "Arial", size: 12.0)
+        buttonTitleLabel?.textAlignment =  .center
+        buttonTitleLabel?.textColor =  UIColor.black
+        buttonTitleLabel?.allowsDefaultTighteningForTruncation =  true
+        button.addSubview(buttonTitleLabel!)
+        
+        
+        
     }
     
     func circleMenu(_ circleMenu: CircleMenu, buttonWillSelected button: UIButton, atIndex: Int) {
-        print("button will selected: \(atIndex)")
+        buttonTitleLabel.text = ""
+        button.addSubview(buttonTitleLabel!)
+        
     }
     
     func circleMenu(_ circleMenu: CircleMenu, buttonDidSelected button: UIButton, atIndex: Int) {
         print("button did selected: \(atIndex)")
+        
+        
+        
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
